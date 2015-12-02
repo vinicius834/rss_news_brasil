@@ -14,6 +14,7 @@ describe RssNewsBrasil do
       news = RssNewsBrasil.latest_news :g1
       news.items.wont_be_empty
       news.title.must_equal "G1"
+      news.items[0].title.wont_be_empty
     end
   end
 

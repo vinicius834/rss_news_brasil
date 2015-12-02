@@ -19,19 +19,43 @@ Or install it yourself as:
     $ gem install rss_news_brasil
 
 ## Usage
+To get a list from news websites available:
 
-TODO: Write usage instructions here
+```ruby
+require 'rss_news_brasil'
 
-## Development
+RssNewsBrasil.available_feeds # => {:bbc_brasil=>"BBC Brasil", :correio_brasiliense=>"Correio Brasiliense", :carta_capital=>"Carta Capital", :correio_do_brasil=>"Correio do Brasil" ...}
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.
+To get latest news:
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release` to create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+```ruby
+g1_latest_news = RssNewsBrasil.latest_news(:g1)
+g1_latest_news.items[1] # => #<RssNewsBrasil::Item:0x007ffa5a63b9b8 @title="Professor da Univasf fala de agressão em debate sobre racismo na UPE", @link="http://g1.globo.com/pe/petrolina-regiao/noticia/2015/12/professor-da-univasf-fala-de-agressao-em-debate-sobre-racismo-na-upe.html">
+
+item = g1_latest_news.items[1]
+item.title # => "Professor da Univasf fala de agressão em debate sobre racismo na UPE"
+item.link # => "http://g1.globo.com/pe/petrolina-regiao/noticia/2015/12/professor-da-univasf-fala-de-agressao-em-debate-sobre-racismo-na-upe.html"
+
+```
+
+## License
+(The MIT License)
+
+Copyright © 2009-2013 Brandon Mathis
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ‘Software’), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED ‘AS IS’, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/rss_news_brasil/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+1. Fork the repository on Github
+2. Create your feature branch (`new-feature`)
+4. Write tests for your change (if applicable)
+5. Run the tests, ensuring they all pass
+6. Submit a Pull Request
