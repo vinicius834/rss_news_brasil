@@ -24,7 +24,7 @@ To get a list from news websites available:
 ```ruby
 require 'rss_news_brasil'
 
-RssNewsBrasil.available_feeds # => {:bbc_brasil=>"BBC Brasil", :correio_brasiliense=>"Correio Brasiliense", :carta_capital=>"Carta Capital", :correio_do_brasil=>"Correio do Brasil" ...}
+RssNewsBrasil.available_feeds # => {:bbc_brasil=>{:name=>"BBC Brasil", :available_feeds=>{:category=>{:economy=>{:name=>"Economia", :url=>"http://www.bbc.com/portuguese/topicos/economia/index.xml"}, :latest_news=>{:name=>"Últimas Notícias", :url=>"http://www.bbc.com/portuguese/index.xml"}}}}, ...}
 ```
 
 To get latest news:

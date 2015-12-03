@@ -9,13 +9,13 @@ require "rss"
 module RssNewsBrasil
   class << self
     def latest_news(from)
-      url = Feeds::LATEST_NEWS_RSS[from]
+      url = Feeds.get_available_feeds_url_by_source_and_category(from, :latest_news)
       rss = RSS::Parser.parse(url, true)
       create_news_links rss
     end
 
     def available_feeds
-      Feeds::AVAILABLE_FEEDS
+      Feeds.available_feeds
     end
 
     private
