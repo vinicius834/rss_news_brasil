@@ -31,9 +31,10 @@ module RssNewsBrasil
       g1: "http://g1.globo.com/dynamo/rss2.xml",
       istoe: "http://istoe.feedsportal.com/c/34268/f/623404/index.rss",
       jornal_do_brasil: "http://www.jb.com.br/noticias/rss.xml",
-      uol: "http://rss.home.uol.com.br/index.xml",
+      uol: "http://rss.uol.com.br/feed/noticias.xml",
       veja: "http://feeds.feedburner.com/noticiasveja?format=xml",
       zero_hora: "http://zh.clicrbs.com.br/rs/ultimas-noticias-rss/"
     }
+
   end
 end
