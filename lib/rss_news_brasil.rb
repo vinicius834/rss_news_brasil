@@ -32,13 +32,13 @@ module RssNewsBrasil
     def get_news_from_rss(rss)
       rss = Rss.new(rss)
       items = rss.items
-      News.new(items, rss.author, rss.last_update)
+      News.new(items, rss.author)
     end
 
     def get_news_from_atom(rss)
       atom = Atom.new(rss)
       items = atom.items
-      News.new(items, atom.author, atom.last_update)
+      News.new(items, atom.author)
     end
   end
 end

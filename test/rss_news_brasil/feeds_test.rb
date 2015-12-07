@@ -16,7 +16,6 @@ describe RssNewsBrasil::Feeds do
 
   describe "available_feeds_categories_from" do
     it "return a hash with available feeds categories from VEJA" do
-
       available_feeds_categories = @feeds.available_feeds_categories_from :veja
       available_feeds_categories.must_be_kind_of Hash
       available_feeds_categories.wont_be_empty

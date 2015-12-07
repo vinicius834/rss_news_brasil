@@ -10,12 +10,8 @@ module RssNewsBrasil
     end
 
     def items
-      items = @rss.items.map { |element| item = Item.new(element.title, element.link) }
+      items = @rss.items.map { |element| item = Item.new(element.title, element.link, element.pubDate) }
       items
-    end
-
-    def last_update
-      @rss.channel.lastBuildDate
     end
   end
 end

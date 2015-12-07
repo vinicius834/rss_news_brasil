@@ -2,6 +2,7 @@ module RssNewsBrasil
   module Feeds
 
     @@categories = {
+      brasil: "Brasil",
       economy: "Economia",
       latest_news: "Últimas Notícias"
     }
@@ -11,6 +12,7 @@ module RssNewsBrasil
         name: "BBC Brasil",
         available_feeds: {
           category: {
+            brasil: { name: @@categories[:brasil], url: "http://www.bbc.com/portuguese/topicos/brasil/index.xml"},
             economy: { name: @@categories[:economy], url: "http://www.bbc.com/portuguese/topicos/economia/index.xml" },
             latest_news: { name: @@categories[:latest_news], url:  "http://www.bbc.com/portuguese/index.xml"}
           }
@@ -30,6 +32,7 @@ module RssNewsBrasil
         name: "Correio Brasiliense",
         available_feeds: {
           category: {
+            brasil: { name: @@categories[:brasil], url: "http://www.correiobraziliense.com.br/rss/noticia/brasil/rss.xml"},
             economy: { name: @@categories[:economy], url: "http://www.correiobraziliense.com.br/rss/noticia/economia/rss.xml" },
             latest_news: { name: @@categories[:latest_news], url: "http://www.correiobraziliense.com.br/rss/noticia/eu-estudante/ultimasnoticias_geral/rss.xml" }
           }
@@ -39,7 +42,6 @@ module RssNewsBrasil
         name: "Correio do Brasil",
         available_feeds: {
           category: {
-            economy: { name:@@categories[:economy], url: "https://rss.ruptly.tv/voiceover/token/cVLOcQ4jRzQU4RFP/brazilian.rss" },
             latest_news: { name: @@categories[:latest_news], url:  "https://rss.ruptly.tv/voiceover/token/cVLOcQ4jRzQU4RFP/brazilian.rss" }
           }
         }
@@ -57,8 +59,7 @@ module RssNewsBrasil
         name: "Época",
         available_feeds: {
           category: {
-            economy: { name: @@categories[:economy], url: "http://revistaepoca.globo.com/Revista/Epoca/Rss/0,,DMI0-15210,00.xml" },
-            latest_news: { name: @@categories[:latest_news], url: "http://revistaepoca.globo.com/Revista/Epoca/Rss/0,,DMI0-15210,00.xml" }
+            latest_news: { name: @@categories[:latest_news], url: "http://epoca.globo.com/rss/ultimas/feed.xml" }
           }
         }
       },
@@ -75,6 +76,7 @@ module RssNewsBrasil
         name: "Extra",
         available_feeds: {
           category: {
+            brasil: { name: @@categories[:brasil], url: "http://extra.globo.com/noticias/brasil/rss.xml"},
             economy: { name: @@categories[:economy], url: "http://extra.globo.com/noticias/economia/rss.xml" },
             latest_news: { name: @@categories[:latest_news], url: "http://extra.globo.com/rss.xml"}
           }
@@ -83,7 +85,7 @@ module RssNewsBrasil
       folha: {
         name: "Folha",
         available_feeds: {
-          category: { 
+          category: {
             economy: { name: @@categories[:economy], url: "http://feeds.folha.uol.com.br/mercado/rss091.xml" },
             latest_news: { name: @@categories[:latest_news], url: "http://feeds.folha.uol.com.br/emcimadahora/rss091.xml" }
           }
@@ -93,6 +95,7 @@ module RssNewsBrasil
         name: "G1",
         available_feeds: {
           category: {
+            brasil: { name: @@categories[:brasil], url: "http://g1.globo.com/dynamo/brasil/rss2.xml"},
             economy: { name: @@categories[:economy], url: "http://g1.globo.com/dynamo/economia/rss2.xml" },
             latest_news: { name: @@categories[:latest_news], url: "http://g1.globo.com/dynamo/rss2.xml" }
           }
@@ -102,6 +105,7 @@ module RssNewsBrasil
         name: "Istoé",
         available_feeds: {
           category: {
+            brasil: { name: @@categories[:brasil], url: "http://istoe.feedsportal.com/c/34268/f/623407/index.rss"},
             economy: { name: @@categories[:economy], url: "http://istoe.feedsportal.com/c/34268/f/623417/index.rss" },
             latest_news: { name: @@categories[:latest_news], url: "http://istoe.feedsportal.com/c/34268/f/623404/index.rss" }
           }
@@ -111,8 +115,18 @@ module RssNewsBrasil
         name: "Jornal do Brasil",
         available_feeds: {
           category: {
+            brasil: { name: @@categories, url: "http://www.jb.com.br/pais/noticias/rss.xml"},
             economy: { name: @@categories[:economy], url: "http://www.jb.com.br/economia/noticias/rss.xml" },
             latest_news: { name: @@categories[:latest_news], url: "http://www.jb.com.br/noticias/rss.xml" }
+          }
+        }
+      },
+      r7: {
+        name: "R7",
+        available_feeds: {
+          category: {
+            economy: { name: @@categories[:economy], url: "http://noticias.r7.com/brasil/feed.xml" },
+            latest_news: { name: @@categories[:latest_news], url: "http://noticias.r7.com/economia/feed.xml" }
           }
         }
       },

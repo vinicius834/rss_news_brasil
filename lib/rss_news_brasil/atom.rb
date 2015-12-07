@@ -1,23 +1,24 @@
 module RssNewsBrasil
   class Atom
-    def initialize(rss)
-      @rss = rss
+    def initialize(atom)
+      @atom = atom
     end
 
     def author
-      @rss.author.name.content
+      @atom.author.name.content
     end
 
     def items
-      items = @rss.items.map { |element| item = Item.new(item_title(element), item_link(element)) }
+      items = @atom.items.map { |element| item = Item.new(item_title(element), item_link(element), item_update(element)) }
       items
     end
 
-    def last_update
-      @rss.updated.content
+    private
+
+    def item_update(item)
+      item.published.content
     end
 
-    private
     def item_title(item)
       item.title.content
     end

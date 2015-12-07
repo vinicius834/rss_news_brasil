@@ -1,11 +1,10 @@
 module RssNewsBrasil
   class News
-    attr_reader :items, :title, :last_update
+    attr_reader :items, :title
 
-    def initialize(items=[], title="", last_update="")
+    def initialize(items=[], title="")
       @items = items
       @title = title
-      @last_update = last_update
     end
   end
 end
