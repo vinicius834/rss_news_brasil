@@ -27,7 +27,6 @@ module RssNewsBrasil
           }
         }
       },
-
       correio_brasiliense: {
         name: "Correio Brasiliense",
         available_feeds: {
@@ -170,6 +169,10 @@ module RssNewsBrasil
       available_source = available_feeds[source]
       available_source_feeds = available_source[:available_feeds]
       available_source_feeds[:category]
+    end
+
+    def self.available_feeds_by_category(category)
+      available_feeds.select {|feed, data| available_feeds_categories_from(feed).key? category }
     end
 
     def self.get_available_feeds_url_by_source_and_category(source, category)

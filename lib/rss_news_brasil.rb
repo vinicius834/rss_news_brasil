@@ -8,16 +8,29 @@ require "rss"
 
 module RssNewsBrasil
   class << self
-    def latest_news(from)
-      url = Feeds.get_available_feeds_url_by_source_and_category(from, :latest_news)
-      rss = RSS::Parser.parse(url, true)
-      create_news_links rss
-    end
-
     def available_feeds
       Feeds.available_feeds
     end
 
+    def available_categories
+      Feeds.available_categories
+    end
+
+    def available_feeds_by_category(category)
+      Feeds.available_feeds_by_category(category)
+    end
+
+    def latest_news(from)
+      url = Feeds.get_available_feeds_url_by_source_and_category(from, :latest_news)
+      response = RSS::Parser.parse(url, true)
+      create_news_links response
+    end
+
+    def news_from_and_category(from, category)
+      url = Feeds.get_available_feeds_url_by_source_and_category(from, category)
+      response = RSS::Parser.parse(url, true)
+      create_news_links response
+    end
     private
 
     def create_news_links(rss)
