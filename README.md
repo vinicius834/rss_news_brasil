@@ -24,20 +24,38 @@ To get a list from news websites available:
 ```ruby
 require 'rss_news_brasil'
 
-RssNewsBrasil.available_feeds # => {:bbc_brasil=>{:name=>"BBC Brasil", :available_feeds=>{:category=>{:economy=>{:name=>"Economia", :url=>"http://www.bbc.com/portuguese/topicos/economia/index.xml"}, :latest_news=>{:name=>"Últimas Notícias", :url=>"http://www.bbc.com/portuguese/index.xml"}}}}, ...}
+RssNewsBrasil.available_news_websites
+ => # {:bbc_brasil=>{:name=>"BBC Brasil"}, :carta_capital=>{:name=>"Carta Capital"}, :correio_brasiliense=>{:name=>"Correio Brasiliense"}, :el_pais_brasil=>{:name=>"El País - Brasil"}, :epoca=>{:name=>"Época"}, :exame=>{:name=>"Exame"}, :extra=>{:name=>"Extra"}, :folha=>{:name=>"Folha"}, :g1=>{:name=>"G1"}, :istoe=>{:name=>"Istoé"}, :jornal_do_brasil=>{:name=>"Jornal do Brasil"}, :r7=>{:name=>"R7"}, :uol=>{:name=>"UOL"}, :veja=>{:name=>"VEJA"}, :zero_hora=>{:name=>"Zero Hora"}}
 ```
+
+To get a list from availables news categories:
+
+```ruby
+RssNewsBrasil.available_categories
+ => # {:brasil=>"Brasil", :culture=>" Cultura", :economy=>"Economia", :education=>"Educação", :health=>"Saúde", :latest_news=>"Últimas Notícias", :music=>"Música", :technology=>"Tecnologia", :world=>"Mundo"}
+```
+
 
 To get latest news:
 
 ```ruby
 g1_latest_news = RssNewsBrasil.latest_news(:g1)
-g1_latest_news.items[1] # => #<RssNewsBrasil::Item:0x007ffa5a63b9b8 @title="Professor da Univasf fala de agressão em debate sobre racismo na UPE", @link="http://g1.globo.com/pe/petrolina-regiao/noticia/2015/12/professor-da-univasf-fala-de-agressao-em-debate-sobre-racismo-na-upe.html">
 
 item = g1_latest_news.items[1]
-item.title # => "Professor da Univasf fala de agressão em debate sobre racismo na UPE"
-item.link # => "http://g1.globo.com/pe/petrolina-regiao/noticia/2015/12/professor-da-univasf-fala-de-agressao-em-debate-sobre-racismo-na-upe.html"
+p item # => #<RssNewsBrasil::Item:0x007fa52a56e330 @title="Trabalhadores são flagrados em situação de escravidão em olarias", @description="<a href='http://g1.globo.com/sp/vale-do-paraiba-regiao/noticia/2015/12/trabalhadores-sao-flagrados-em-situacao-de-escravidao-em-olarias.html' alt='Trabalhadores são flagrados em situação de escravidão em olarias'><img border='0' src='http://s2.glbimg.com/e2ZeIj2mX0VqlK0MPiyiF42jUOo=/90x68/s.glbimg.com/jo/g1/f/original/2015/12/11/olaria_denuncia1.jpg' alt='Trabalhadores são flagrados em situação de escravidão em olarias' title='Trabalhadores são flagrados em situação de escravidão em olarias' /></a><br />Operação do Ministério Público do Trabalho com PRF flagra irregularidades.\nProblemas foram encontrados em duas olarias em Bragança Paulista.", @link="http://g1.globo.com/sp/vale-do-paraiba-regiao/noticia/2015/12/trabalhadores-sao-flagrados-em-situacao-de-escravidao-em-olarias.html", @pub_date=2015-12-11 18:34:19 -0200>
 
 ```
+
+To get news by category:
+
+```ruby
+news = RssNewsBrasil.news_from_and_category :g1, :brasil
+
+news1 = news.items[1]
+p item # => #<RssNewsBrasil::Item:0x007fa52a204668 @title="Policia Civil deflagra operação Proteção Integral no interior do AM", @description="<a href='http://g1.globo.com/am/amazonas/noticia/2015/12/policia-civil-deflagra-operacao-protecao-integral-no-interior-do-am.html' alt='Policia Civil deflagra operação Proteção Integral no interior do AM'><img border='0' src='http://s2.glbimg.com/fYg_KwtzUch7COIQVDm_mIALC3s=/90x68/s.glbimg.com/jo/g1/f/original/2015/12/11/9e4f8ba3-aeba-43d2-914e-5af09710da61.jpg' alt='Policia Civil deflagra operação Proteção Integral no interior do AM' title='Policia Civil deflagra operação Proteção Integral no interior do AM' /></a><br />Ação teve objetivo de reduzir as infrações praticadas por jovens em Urucará.\nCerca de 15 suspeitos foram detidos durante a operação.", @link="http://g1.globo.com/am/amazonas/noticia/2015/12/policia-civil-deflagra-operacao-protecao-integral-no-interior-do-am.html", @pub_date=2015-12-11 18:41:08 -0200>
+
+```
+
 
 ## License
 The MIT License (MIT)

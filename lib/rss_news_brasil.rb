@@ -8,6 +8,10 @@ require "rss"
 
 module RssNewsBrasil
   class << self
+    def available_news_websites
+      Feeds.available_news_websites
+    end
+
     def available_feeds
       Feeds.available_feeds
     end
@@ -17,21 +21,25 @@ module RssNewsBrasil
     end
 
     def available_feeds_by_category(category)
-      Feeds.available_feeds_by_category(category)
+      Feeds.get_feeds_by_category(category)
     end
 
     def latest_news(from)
-      url = Feeds.get_available_feeds_url_by_source_and_category(from, :latest_news)
-      response = RSS::Parser.parse(url, true)
+      url = Feeds.get_url_feed_from_by_category(from, :latest_news)
+      response = parse_feed(url)
       create_news_links response
     end
 
     def news_from_and_category(from, category)
-      url = Feeds.get_available_feeds_url_by_source_and_category(from, category)
-      response = RSS::Parser.parse(url, true)
+      url = Feeds.get_url_feed_from_by_category(from, category)
+      response = parse_feed(url)
       create_news_links response
     end
+
     private
+    def parse_feed(url)
+      RSS::Parser.parse(url, false)
+    end
 
     def create_news_links(rss)
       case rss.feed_type
@@ -44,14 +52,16 @@ module RssNewsBrasil
 
     def get_news_from_rss(rss)
       rss = Rss.new(rss)
-      items = rss.items
-      News.new(items, rss.author)
+      create_news rss
     end
 
     def get_news_from_atom(rss)
       atom = Atom.new(rss)
-      items = atom.items
-      News.new(items, atom.author)
+      create_news atom
+    end
+
+    def create_news(data)
+      News.new(data.items, data.title, data.description, data.link, data.last_build_date, data.image_url)
     end
   end
 end
